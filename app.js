@@ -21,6 +21,9 @@ var scoreboard = require('./routes/scoreboard');
 app.use('/', routes);
 app.use('/scoreboard', scoreboard);
 
+app.get('/', function(req, res) {
+    res.sendFile(path.join(__dirname + '/index.ejs'));
+});
 
 //error handling
 app.use(function(req, res, next) {
