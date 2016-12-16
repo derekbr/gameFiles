@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<link rel="stylesheet" href="css/styles.css">
+
+</head>
+<body onload="gameEnd()">
+<script>
+function gameEnd(){
+	var userNameUrl= window.top.location.href;
+	
+	function parseURLParams(url) {
+    var queryStart = url.indexOf("?") + 1,
+        queryEnd   = url.indexOf("#") + 1 || url.length + 1,
+        query = url.slice(queryStart, queryEnd - 1),
+        pairs = query.replace(/\+/g, " ").split("&"),
+        parms = {}, i, n, v, nv;
+
+    if (query === url || query === "") {
+        return;
+    }
+
+    for (i = 0; i < pairs.length; i++) {
+        nv = pairs[i].split("=");
+        n = decodeURIComponent(nv[0]);
+        v = decodeURIComponent(nv[1]);
+
+        if (!parms.hasOwnProperty(n)) {
+            parms[n] = [];
+        }
+
+        parms[n].push(nv.length === 2 ? v : null);
+    }
+    return parms;
+}
+	
+	var userInfo = parseURLParams(userNameUrl);
+	document.getElementById("username").value= userInfo.user;
+	document.getElementById("gameScore").value = userInfo.score;
+}
+</script>
+
+<h2>Game over.</h2>
+
+
+<table>
+
+	<tr>
+		<th>Name</th>
+		<th>Score</th>
+		
+	</tr>
+
+<% data.forEach(function(playerScore){ %>
+    <%- include _playerScore %>
+  <% }); %>
+</table>
+  
+  
+<h4>Results from last game:</h4>
+<input style="background-color:#AAAACC" id= "username" readonly><br>
+<input style="background-color:#AAAACC" id= "gameScore" readonly>
+
+	<form action="./game.ejs">
+		
+		<br>
+		<input id="username" type="text" placeholder="Username" name="user" required><br><br>
+		
+		<input id="buttons" type="submit" value="Let's Go!"><br>
+
+	</form>
+	
+<br>
+
+</div>
+</body>
+</html>

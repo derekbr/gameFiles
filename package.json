@@ -1,0 +1,27 @@
+{
+  "name": "game",
+  "version": "1.0.0",
+  "description": "This is a simplified flappy-bird game",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "author": "Derek",
+  "license": "ISC",
+  "dependencies": {
+    "bluebird": "^3.4.6",
+    "body-parser": "^1.15.2",
+    "connect-pg-simple": "^3.1.2",
+    "dotenv": "^2.0.0",
+    "ejs": "^2.5.5",
+    "ejs-mate": "^2.3.0",
+    "express": "latest",
+    "express-session": "^1.14.2",
+    "nodemon": "^1.11.0",
+    "pg-promise": "^5.5.0"
+  }
+  "engines": {
+    "node": "5.3.0"
+  }
+}
